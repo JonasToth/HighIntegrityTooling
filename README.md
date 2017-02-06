@@ -172,7 +172,7 @@ Just mention your name on the section you will take care of.
 #### 7.4.3 Ensure that an object or a function used from multiple translation units is declared in a single header file 
 
 ### 7.5 The asm declaration
-- jonathan did it already, in review
+    - jonathan did it already, in review
 
 
 ## 8 Definitions
@@ -182,23 +182,28 @@ Just mention your name on the section you will take care of.
 
 ### 8.2 Meaning of declarators
 #### 8.2.1 Make parameter names absent or identical in all declarations
-- there is a check in readability or so
+    - there is a check in readability or so
+
 #### 8.2.2 Do not declare functions with an excessive number of parameters
-- readability-function-size in review
+    - readability-function-size in review
+
 #### 8.2.3 Pass small objects with a trivial copy constructor by value
 #### 8.2.4 Do not pass std::unique_ptr by const reference 
 
 ### 8.3 Function definitions
 #### 8.3.1 Do not write functions with an excessive McCabe Cyclomatic Complexity
-- readability-function-size
+    - readability-function-size
+
 #### 8.3.2 Do not write functions with a high static program path count
-- readability-function-size
+    - readability-function-size
+
 #### 8.3.3 Do not use default arguments
 #### 8.3.4 Define =delete functions with parameters of type rvalue reference to const 
 
 ### 8.4 Initializers
 #### 8.4.1 Do not access an invalid object or an object with indeterminate value
-- use after move is implemented
+    - use after move is implemented
+
 #### 8.4.2 Ensure that a braced aggregate initializer matches the layout of the aggregate object 
 
 
@@ -314,7 +319,7 @@ Just mention your name on the section you will take care of.
 
 
 ### 17.1 General
-- dont use std::vector<bool> is in code review, by jonathan
+    - dont use std::vector<bool> is in code review, by jonathan
 
 ### 17.2 The C standard library
 
