@@ -128,8 +128,21 @@ Just mention your name on the section you will take care of.
 
 
 ### 6.1 Selection statements
+#### 6.1.1 Enclose the body of a selection or an iteration statement in a compound statement
+#### 6.1.2 Explicitly cover all paths through multi-way selection statements
+#### 6.1.3 Ensure that a non-empty case statement block does not fall through to the next label
+#### 6.1.4 Ensure that a switch statement has at least two case labels, distinct from the default label 
+
 ### 6.2 Iteration statements
+#### 6.2.1 Implement a loop that only uses element values as a range-based loop
+#### 6.2.2 Ensure that a loop has a single loop counter, an optional control variable, and is not degenerate
+#### 6.2.3 Do not alter a control or counter variable more than once in a loop
+#### 6.2.4 Only modify a for loop counter in the for expression 
+
 ### 6.3 Jump statements
+#### 6.3.1 Ensure that the label(s) for a jump statement or a switch condition appear later, in the same or an enclosing block
+#### 6.3.2 Ensure that execution of a function with a non-void return type ends in a return statement with a value 
+
 ### 6.4 Declaration statement
 
 
@@ -137,10 +150,29 @@ Just mention your name on the section you will take care of.
 
 
 ### 7.1 Specifiers
+#### 7.1.1 Declare each identifier on a separate line in a separate declaration
+#### 7.1.2 Use const whenever possible
+#### 7.1.3 Do not place type specifiers before non-type specifiers in a declaration
+#### 7.1.4 Place CV-qualifiers on the right hand side of the type they apply to
+#### 7.1.5 Do not inline large functions
+#### 7.1.6 Use class types or typedefs to abstract scalar quantities and standard integer types
+#### 7.1.7 Use a trailing return type in preference to type disambiguation using typename
+#### 7.1.8 Use auto id = expr when declaring a variable to have the same type as its initializer function call
+#### 7.1.9 Do not explicitly specify the return type of a lambda
+#### 7.1.10 Use static_assert for assertions involving compile time constants 
+
 ### 7.2 Enumeration declarations
+#### 7.2.1 Use an explicit enumeration base and ensure that it is large enough to store all enumerators
+#### 7.2.2 Initialize none, the first only or all enumerators in an enumeration 
+
 ### 7.3 Namespaces
 ### 7.4 Linkage specifications
+#### 7.4.1 Ensure that any objects, functions or types to be used from a single translation unit are defined in an unnamed namespace in the main source file
+#### 7.4.2 Ensure that an inline function, a function template, or a type used from multiple translation units is defined in a single header file
+#### 7.4.3 Ensure that an object or a function used from multiple translation units is declared in a single header file 
+
 ### 7.5 The asm declaration
+- jonathan did it already, in review
 
 
 ## 8 Definitions
