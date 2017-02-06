@@ -179,15 +179,39 @@ Just mention your name on the section you will take care of.
 
 
 ### 8.1 Type names
+
 ### 8.2 Meaning of declarators
+#### 8.2.1 Make parameter names absent or identical in all declarations
+- there is a check in readability or so
+#### 8.2.2 Do not declare functions with an excessive number of parameters
+- readability-function-size in review
+#### 8.2.3 Pass small objects with a trivial copy constructor by value
+#### 8.2.4 Do not pass std::unique_ptr by const reference 
+
 ### 8.3 Function definitions
+#### 8.3.1 Do not write functions with an excessive McCabe Cyclomatic Complexity
+- readability-function-size
+#### 8.3.2 Do not write functions with a high static program path count
+- readability-function-size
+#### 8.3.3 Do not use default arguments
+#### 8.3.4 Define =delete functions with parameters of type rvalue reference to const 
+
 ### 8.4 Initializers
+#### 8.4.1 Do not access an invalid object or an object with indeterminate value
+- use after move is implemented
+#### 8.4.2 Ensure that a braced aggregate initializer matches the layout of the aggregate object 
 
 
 ## 9 Classes
 
 
 ### 9.1 Member functions
+#### 9.1.1 Declare static any member function that does not require this.  Alternatively, declare const any member function that does not modify the externally visible state of the object
+#### 9.1.2 Make default arguments the same or absent when overriding a virtual function
+#### 9.1.3 Do not return non-const handles to class data from const member functions
+#### 9.1.4 Do not write member functions which return non-const handles to data less accessible than the member function
+#### 9.1.5 Do not introduce virtual functions in a final class 
+
 ### 9.2 Bit-fields
 
 
@@ -195,7 +219,9 @@ Just mention your name on the section you will take care of.
 
 
 ### 10.1 Multiple base classes
+
 ### 10.2 Virtual functions
+
 ### 10.3 Abstract classes
 
 
@@ -203,6 +229,7 @@ Just mention your name on the section you will take care of.
 
 
 ### 11.1 Access specifiers
+
 ### 11.2 Friends
 
 
@@ -210,47 +237,98 @@ Just mention your name on the section you will take care of.
 
 
 ### 12.1 Conversions
+
 ### 12.2 Destructors
+
 ### 12.3 Free store
+
 ### 12.4 Initializing bases and members
+#### 12.4.1 Do not use the dynamic type of an object unless the object is fully constructed
+#### 12.4.2 Ensure that a constructor initializes explicitly all base classes and non-static data members
+#### 12.4.3 Do not specify both an NSDMI and a member initializer in a constructor for the same non static member
+#### 12.4.4 Write members in an initialization list in the order in which they are declared
+#### 12.4.5 Use delegating constructors to reduce code duplication 
+
 ### 12.5 Copying and moving class objects
+#### 12.5.1 Define explicitly =default or =delete implicit special member functions of concrete classes
+#### 12.5.2 Define special members =default if the behavior is equivalent
+#### 12.5.3 Ensure that a user defined move/copy constructor only moves/copies base and member objects
+#### 12.5.4 Declare noexcept the move constructor and move assignment operator
+#### 12.5.5 Correctly reset moved-from handles to resources in the move constructor
+#### 12.5.6 Use an atomic, non-throwing swap operation to implement the copy and move assignment operators
+#### 12.5.7 Declare assignment operators with the ref-qualifier &
+#### 12.5.8 Make the copy assignment operator of an abstract class protected or define it =delete 
 
 
 ## 13 Overloading
 
 
 ### 13.1 Overload resolution
+#### 13.1.1 Ensure that all overloads of a function are visible from where it is called
+#### 13.1.2 If a member of a set of callable functions includes a universal reference parameter, ensure that one appears in the same position for all other members 
+
 ### 13.2 Overloaded operators
+#### 13.2.1 Do not overload operators with special semantics
+#### 13.2.2 Ensure that the return type of an overloaded binary operator matches the built-in counterparts
+#### 13.2.3 Declare binary arithmetic and bitwise operators as non-members
+#### 13.2.4 When overloading the subscript operator (operator[]) implement both const and non-const versions
+#### 13.2.5 Implement a minimal set of operators and use them to implement all other related operators
+
 
 
 ## 14 Templates
 
 
 ### 14.1 Template declarations
+
 ### 14.2 Template instantiation and specialization
+####  14.2.1 Declare template specializations in the same file as the primary template they specialize
+####  14.2.2 Do not explicitly specialize a function template that is overloaded with other templates
+####  14.2.3 Declare extern an explicitly instantiated template 
 
 
 ## 15 Exception handling
 
 
 ### 15.1 Throwing an exception
+
 ### 15.2 Constructors and destructors
+
 ### 15.3 Handling an exception
+####  15.3.1 Do not access non-static members from a catch handler of constructor/destructor function try block
+####  15.3.2 Ensure that a program does not result in a call to std::terminate 
 
 
 ## 16 Preprocessing
 
 
 ### 16.1 Source file inclusion
+####  16.1.1 Use the preprocessor only for implementing include guards, and including header files with include guards
+####  16.1.2 Do not include a path specifier in filenames supplied in #include directives
+####  16.1.3 Match the filename in a #include directive to the one on the filesystem
+####  16.1.4 Use <> brackets for system and standard library headers. Use quotes for all other headers
+####  16.1.5 Include directly the minimum number of headers required for compilation 
 
 
 ## 17 Standard library
 
 
 ### 17.1 General
+- dont use std::vector<bool> is in code review, by jonathan
+
 ### 17.2 The C standard library
+
 ### 17.3 General utilities library
+####  17.3.1 Do not use std::move on objects declared with const or const & type
+####  17.3.2 Use std::forward to forward universal references
+####  17.3.3 Do not subsequently use the argument to std::forward
+####  17.3.4 Do not create smart pointers of array type
+####  17.3.5 Do not create an rvalue reference of std::array 
+
 ### 17.4 Containers library
+####  17.4.1 Use const container calls when result is immediately converted to a const iterator
+####  17.4.2 Use API calls that construct objects in place 
+
 ### 17.5 Algorithms Library
 
 
@@ -258,6 +336,20 @@ Just mention your name on the section you will take care of.
 
 
 ### 18.1 General
+
 ### 18.2 Threads
+####  18.2.1 Use high_integrity::thread in place of std::thread
+####  18.2.2 Synchronize access to data shared between threads using a single lock
+####  18.2.3 Do not share volatile data between threads
+####  18.2.4 Use std::call_once rather than the Double-Checked Locking pattern 
+
 ### 18.3 Mutual Exclusion
+####  18.3.1 Within the scope of a lock, ensure that no static path results in a lock of the same mutex
+####  18.3.2 Ensure that order of nesting of locks in a project forms a DAG
+####  18.3.3 Do not use std::recursive_mutex
+####  18.3.4 Only use std::unique_lock when std::lock_guard cannot be used
+####  18.3.5 Do not access the members of std::mutex directly
+####  18.3.6 Do not use relaxed atomics 
+
 ### 18.4 Condition Variables
+
