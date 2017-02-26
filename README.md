@@ -182,13 +182,17 @@ Just mention your name on the section you will take care of.
 
 ### 8.2 Meaning of declarators
 #### 8.2.1 Make parameter names absent or identical in all declarations
-    - there is a check in readability or so
+    - readability-identifier-naming
 
 #### 8.2.2 Do not declare functions with an excessive number of parameters
-    - readability-function-size in review
+    - readability-function-size 
 
 #### 8.2.3 Pass small objects with a trivial copy constructor by value
+    - todo
+
 #### 8.2.4 Do not pass std::unique_ptr by const reference 
+    - todo
+
 
 ### 8.3 Function definitions
 #### 8.3.1 Do not write functions with an excessive McCabe Cyclomatic Complexity
@@ -198,13 +202,21 @@ Just mention your name on the section you will take care of.
     - readability-function-size
 
 #### 8.3.3 Do not use default arguments
+    - todo
+    - google-default-arguments as a starting point
+    
 #### 8.3.4 Define =delete functions with parameters of type rvalue reference to const 
+    - todo
 
 ### 8.4 Initializers
 #### 8.4.1 Do not access an invalid object or an object with indeterminate value
-    - use after move is implemented
+    - todo?
+    - warning for uninitialized variables should the compiler do
+    - access freed memory is CSA, and maybe impossible to determine statically?
+    - misc-use-after-move
 
 #### 8.4.2 Ensure that a braced aggregate initializer matches the layout of the aggregate object 
+    - todo
 
 
 ## 9 Classes
@@ -212,57 +224,115 @@ Just mention your name on the section you will take care of.
 
 ### 9.1 Member functions
 #### 9.1.1 Declare static any member function that does not require this.  Alternatively, declare const any member function that does not modify the externally visible state of the object
+    - todo
+    - especially the const part is a general issue (automatically mark methods
+      const if possible), i think this check is especially valuable
+
 #### 9.1.2 Make default arguments the same or absent when overriding a virtual function
+    - i thought dont use default arguments? :D
+    - google-default-arguments, not
+    - to implement
+
 #### 9.1.3 Do not return non-const handles to class data from const member functions
+    - to implement, EZ? and very valuable belonging safety
+
 #### 9.1.4 Do not write member functions which return non-const handles to data less accessible than the member function
+    - feels like general version of 9.1.3, should be implemented in the same
+      check
+
 #### 9.1.5 Do not introduce virtual functions in a final class 
+    - todo
 
 ### 9.2 Bit-fields
+    - todo
 
 
 ## 10 Derived classes
 
 
 ### 10.1 Multiple base classes
+    - todo
+    - check for necessaity of a virtual base class
 
 ### 10.2 Virtual functions
+    - modernize-use-override
 
 ### 10.3 Abstract classes
-
+    - todo
+    - check inheritence properties
 
 ## 11 Member access control
 
 
 ### 11.1 Access specifiers
+    - todo
+    - EZ, just check for class, and warn for all data members and warn for
+      nonprivate ones
+    - execption are extern "C" { struct }
 
 ### 11.2 Friends
+    - todo
+    - EZ warn for friends
 
 
 ## 12 Special member functions
 
 
 ### 12.1 Conversions
+    - google-explicit-constructor
+    - maybe modification, but doesnt seem like it
 
 ### 12.2 Destructors
+    - todo
 
 ### 12.3 Free store
+    - misc-new-delete-overloads
 
 ### 12.4 Initializing bases and members
 #### 12.4.1 Do not use the dynamic type of an object unless the object is fully constructed
+    - todo
+    - maybe something for undefinedbehavioursanitizer?
+
 #### 12.4.2 Ensure that a constructor initializes explicitly all base classes and non-static data members
+    - todo for the baseclasses?
+    - cppcoreguidelines-pro-type-member-init
+
 #### 12.4.3 Do not specify both an NSDMI and a member initializer in a constructor for the same non static member
+    - todo
+
 #### 12.4.4 Write members in an initialization list in the order in which they are declared
+    - i though there is an check for that, cannot find it!
+    - maybe todo
+
 #### 12.4.5 Use delegating constructors to reduce code duplication 
+    - misc-undelegated-constructor
 
 ### 12.5 Copying and moving class objects
+
 #### 12.5.1 Define explicitly =default or =delete implicit special member functions of concrete classes
+    - modernize-use-equals-default
+    - modernize-use-equals-delete
+
 #### 12.5.2 Define special members =default if the behavior is equivalent
+    - handled by the check for 12.5.1
+
 #### 12.5.3 Ensure that a user defined move/copy constructor only moves/copies base and member objects
+    - todo
+
 #### 12.5.4 Declare noexcept the move constructor and move assignment operator
+    - misc-noexcept-move-constructor
+
 #### 12.5.5 Correctly reset moved-from handles to resources in the move constructor
+    - todo?
+
 #### 12.5.6 Use an atomic, non-throwing swap operation to implement the copy and move assignment operators
+    - todo
+
 #### 12.5.7 Declare assignment operators with the ref-qualifier &
+    - cppcoreguidelines-special-member-functions
+
 #### 12.5.8 Make the copy assignment operator of an abstract class protected or define it =delete 
+    - todo
 
 
 ## 13 Overloading
