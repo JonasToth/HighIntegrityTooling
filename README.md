@@ -32,10 +32,19 @@ Just mention your name on the section you will take care of.
 
 ### 1.3 Deprecated features
 #### 1.3.1 Do not use the increment operator (++) on a variable of type bool
+- shall be ez
+
 #### 1.3.2 Do not use the register keyword
+- should be ez
+
 #### 1.3.3 Do not use the C Standard Library .h headers
+- modernize-deprecated-header
+
 #### 1.3.4 Do not use deprecated STL library features
-#### 1.3.5 Do not use throw exception specifications 
+- this would be done with many checkers that can transform as well?
+
+#### 1.3.5 Do not use throw exception specifications
+- i saw a check for that in review or sth like that, did not find it right now
 
 
 ## 2 Lexical conventions
@@ -47,14 +56,20 @@ Just mention your name on the section you will take care of.
 
 ### 2.3 Comments
 #### 2.3.1 Do not use the C comment delimiters /* … */
+- preprocessor could do that
+
 #### 2.3.2 Do not comment out code 
+- heuristic
 
 ### 2.4 Identifiers
 
 ### 2.5 Literals
 #### 2.5.1 Do not concatenate strings with different encoding prefixes
 #### 2.5.2 Do not use octal constants (other than zero)
+- should be ez, but unsure for that
+
 #### 2.5.3 Use nullptr for the null pointer constant 
+- modernize-use-nullptr
 
 
 ## 3 Basic concepts
@@ -68,8 +83,13 @@ Just mention your name on the section you will take care of.
 
 ### 3.4 Object lifetime
 #### 3.4.1 Do not return a reference or a pointer to an automatic variable defined within the function
+- compiler diagnostic can do this already
+
 #### 3.4.2 Do not assign the address of a variable to a pointer with a greater lifetime
-#### 3.4.3 Use RAII for resources 
+- lifetime analysis? this is CSA area i guess
+
+#### 3.4.3 Use RAII for resources
+- this is guideline, many cheks deal with it
 
 ### 3.5 Types
 
@@ -404,14 +424,21 @@ Just mention your name on the section you will take care of.
 ### 13.2 Overloaded operators
 #### 13.2.1 Do not overload operators with special semantics
 #### 13.2.2 Ensure that the return type of an overloaded binary operator matches the built-in counterparts
-#### 13.2.3 Declare binary arithmetic and bitwise operators as non-members
-#### 13.2.4 When overloading the subscript operator (operator[]) implement both const and non-const versions
-#### 13.2.5 Implement a minimal set of operators and use them to implement all other related operators
+- that should be a lot to do, but rather mechanical
 
+#### 13.2.3 Declare binary arithmetic and bitwise operators as non-members
+- operator overload knows if its in a class or nonmember in clang?
+
+#### 13.2.4 When overloading the subscript operator (operator[]) implement both const and non-const versions
+- i think its ez
+
+#### 13.2.5 Implement a minimal set of operators and use them to implement all other related operators
+- heuritic, but i think codereview is necessary
 
 
 ## 14 Templates
 
+template stuff scares me :)
 
 ### 14.1 Template declarations
 
@@ -424,14 +451,18 @@ Just mention your name on the section you will take care of.
 ## 15 Exception handling
 
 
-### 15.1 Throwing an exception
+#### 15.1.1 Only use instances of std::exception for exceptions
+- this is ez, i want to :)
 
-### 15.2 Constructors and destructors
+#### 15.2.1 Do not throw an exception from a destructor
+- implemented right now, will go into code review
 
 ### 15.3 Handling an exception
 ####  15.3.1 Do not access non-static members from a catch handler of constructor/destructor function try block
+- traversing all statements and find out all member acesses
+
 ####  15.3.2 Ensure that a program does not result in a call to std::terminate 
-    - implemented right now, will go ito code review
+- static analysis?
 
 
 ## 16 Preprocessing
@@ -439,10 +470,18 @@ Just mention your name on the section you will take care of.
 
 ### 16.1 Source file inclusion
 ####  16.1.1 Use the preprocessor only for implementing include guards, and including header files with include guards
+- there is something in review or commited already
+- refactoring needs that as well, replace MACRO with inline function for example
+
 ####  16.1.2 Do not include a path specifier in filenames supplied in #include directives
 ####  16.1.3 Match the filename in a #include directive to the one on the filesystem
+- could be done?
+
 ####  16.1.4 Use <> brackets for system and standard library headers. Use quotes for all other headers
+- easy or not? system will contain windows headers as well?
+
 ####  16.1.5 Include directly the minimum number of headers required for compilation 
+- modularize?
 
 
 ## 17 Standard library
@@ -455,14 +494,24 @@ Just mention your name on the section you will take care of.
 
 ### 17.3 General utilities library
 ####  17.3.1 Do not use std::move on objects declared with const or const & type
+- misc-move-const-arg
+
 ####  17.3.2 Use std::forward to forward universal references
+- can be done?
+
 ####  17.3.3 Do not subsequently use the argument to std::forward
+- use after move is almost the same
+
 ####  17.3.4 Do not create smart pointers of array type
 ####  17.3.5 Do not create an rvalue reference of std::array 
+- should be done?
 
 ### 17.4 Containers library
 ####  17.4.1 Use const container calls when result is immediately converted to a const iterator
+- interesting
+
 ####  17.4.2 Use API calls that construct objects in place 
+- modernize-use-emplace
 
 ### 17.5 Algorithms Library
 
@@ -474,16 +523,32 @@ Just mention your name on the section you will take care of.
 
 ### 18.2 Threads
 ####  18.2.1 Use high_integrity::thread in place of std::thread
+- check all decl if its a std::thread?
+
 ####  18.2.2 Synchronize access to data shared between threads using a single lock
+- static analysis
+
 ####  18.2.3 Do not share volatile data between threads
+- forbid volatile in general? :D
+
 ####  18.2.4 Use std::call_once rather than the Double-Checked Locking pattern 
 
 ### 18.3 Mutual Exclusion
 ####  18.3.1 Within the scope of a lock, ensure that no static path results in a lock of the same mutex
+- static analysis
+
 ####  18.3.2 Ensure that order of nesting of locks in a project forms a DAG
+- static analysis possible?
+
 ####  18.3.3 Do not use std::recursive_mutex
+- ez
+
 ####  18.3.4 Only use std::unique_lock when std::lock_guard cannot be used
+- maybe one step can be std::lock_guard could be warned always
+
 ####  18.3.5 Do not access the members of std::mutex directly
+- ez?
+
 ####  18.3.6 Do not use relaxed atomics 
 
 ### 18.4 Condition Variables
