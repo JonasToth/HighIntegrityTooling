@@ -373,6 +373,8 @@ Just mention your name on the section you will take care of.
 ####  15.3.1 Do not access non-static members from a catch handler of constructor/destructor function try block
 ####  15.3.2 Ensure that a program does not result in a call to std::terminate 
 
+    - implemented right now, will go ito code review
+
 
 ## 16 Preprocessing
 
