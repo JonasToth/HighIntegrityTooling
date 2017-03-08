@@ -79,12 +79,14 @@ Just mention your name on the section you will take care of.
 
 ### 4.1 Array-to-pointer conversion
 - cppcoreguidelines-pro-bounds-array-to-pointer-decay
+
 ### 4.2 Integral conversions
 #### 4.2.1 Ensure that the U suffix is applied to a literal used in a context requiring an unsigned integral expression
 #### 4.2.2 Ensure that data loss does not demonstrably occur in an integral expression 
 
 ### 4.3 Floating point conversions
 - misc-misplaced-widening-cast?
+
 ### 4.4 Floating-integral conversions
 - misc-misplaced-widening-cast?
 
@@ -96,8 +98,10 @@ Just mention your name on the section you will take care of.
 
 #### 5.1.1 Use symbolic names instead of literal values in code
 - code review? is there a way to make some automation on that topic?
+
 #### 5.1.2 Do not rely on the sequence of evaluation within an expression
 - order of evaluation, clang diagnostics? UBSan?
+
 #### 5.1.3 Use parentheses in expressions to specify the intent of the expression
 #### 5.1.4 Do not capture variables implicitly in a lambda
 #### 5.1.5 Include a (possibly empty) parameter list in every lambda expression
@@ -107,14 +111,17 @@ Just mention your name on the section you will take care of.
 ### 5.2 Postfix expressions
 #### 5.2.1 Ensure that pointer or array access is demonstrably within bounds of a valid object
 - cppcoreguidelines-pro-bounds-\*
+
 #### 5.2.2 Ensure that functions do not call themselves, either directly or indirectly
 - i dont know, is there a callgraph analysis method?
 
 ### 5.3 Unary expressions
 #### 5.3.1 Do not apply unary minus to operands of unsigned type
 - i think this should be ez
+
 #### 5.3.2 Allocate memory using new and release it using delete
 - cppcoreguidelines-no-malloc
+
 #### 5.3.3 Ensure that the form of delete matches the form of new used to allocate the memory 
 - static analysis does it already AFAIK
 
@@ -124,6 +131,7 @@ Just mention your name on the section you will take care of.
 - cppcoreguidelines-pro-type-cstyle-cast
 - google-explicit-constructor
 - google-readability-casting
+
 #### 5.4.2 Do not cast an expression to an enumeration type
 #### 5.4.3 Do not convert from a base class to a derived class 
 
