@@ -455,7 +455,7 @@ template stuff scares me :)
 - this is ez, i want to :)
 
 #### 15.2.1 Do not throw an exception from a destructor
-- implemented right now, will go into code review
+- in code review
 
 ### 15.3 Handling an exception
 ####  15.3.1 Do not access non-static members from a catch handler of constructor/destructor function try block
