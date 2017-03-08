@@ -151,19 +151,36 @@ Just mention your name on the section you will take care of.
 
 ### 6.1 Selection statements
 #### 6.1.1 Enclose the body of a selection or an iteration statement in a compound statement
+- how would that be done?
+
 #### 6.1.2 Explicitly cover all paths through multi-way selection statements
+- i think this can be done ez as well, unsure
+
 #### 6.1.3 Ensure that a non-empty case statement block does not fall through to the next label
+- should be ez
+
 #### 6.1.4 Ensure that a switch statement has at least two case labels, distinct from the default label 
+- should be ez
 
 ### 6.2 Iteration statements
 #### 6.2.1 Implement a loop that only uses element values as a range-based loop
+- modernize-loop-convert
+
 #### 6.2.2 Ensure that a loop has a single loop counter, an optional control variable, and is not degenerate
+- hmmm, complicated?
+
 #### 6.2.3 Do not alter a control or counter variable more than once in a loop
+- not ez, but visiting the compound stmt could be done, see readability-function-size
+
 #### 6.2.4 Only modify a for loop counter in the for expression 
+- should be done ez as well
 
 ### 6.3 Jump statements
 #### 6.3.1 Ensure that the label(s) for a jump statement or a switch condition appear later, in the same or an enclosing block
+- idk, but but that feels like static analysis?
+
 #### 6.3.2 Ensure that execution of a function with a non-void return type ends in a return statement with a value 
+- compiler diagnostics!
 
 ### 6.4 Declaration statement
 
@@ -173,19 +190,39 @@ Just mention your name on the section you will take care of.
 
 ### 7.1 Specifiers
 #### 7.1.1 Declare each identifier on a separate line in a separate declaration
+- there is one already, i did not find it atm
+
 #### 7.1.2 Use const whenever possible
+- very valuable to have a checker that will do const correctness with automatic fixing
+
 #### 7.1.3 Do not place type specifiers before non-type specifiers in a declaration
+
 #### 7.1.4 Place CV-qualifiers on the right hand side of the type they apply to
+- clang-format area i think
+
 #### 7.1.5 Do not inline large functions
+- hm, is this something for readability-function-size
+
 #### 7.1.6 Use class types or typedefs to abstract scalar quantities and standard integer types
+- use of uint8 and so on
+
 #### 7.1.7 Use a trailing return type in preference to type disambiguation using typename
+- minor check,not so relevant
+
 #### 7.1.8 Use auto id = expr when declaring a variable to have the same type as its initializer function call
+- modernize-use-auto
+
 #### 7.1.9 Do not explicitly specify the return type of a lambda
 #### 7.1.10 Use static_assert for assertions involving compile time constants 
+- misc-static-assert
 
 ### 7.2 Enumeration declarations
+
 #### 7.2.1 Use an explicit enumeration base and ensure that it is large enough to store all enumerators
+- does the compiler already warn for this?
+
 #### 7.2.2 Initialize none, the first only or all enumerators in an enumeration 
+- minor check?
 
 ### 7.3 Namespaces
 ### 7.4 Linkage specifications
@@ -394,7 +431,6 @@ Just mention your name on the section you will take care of.
 ### 15.3 Handling an exception
 ####  15.3.1 Do not access non-static members from a catch handler of constructor/destructor function try block
 ####  15.3.2 Ensure that a program does not result in a call to std::terminate 
-
     - implemented right now, will go ito code review
 
 
