@@ -436,8 +436,7 @@ Just mention your name on the section you will take care of.
 ### 11.1 Access specifiers
 #### 11.1.1 Declare all data members private
 - todo
-- EZ, just check for class, and warn for all data members and warn for
-  nonprivate ones
+- EZ, just check for class, and warn for all data public data members 
 - execption are extern "C" { struct }
 
 ### 11.2 Friends
@@ -567,6 +566,7 @@ template stuff scares me :)
 ### 15.3 Handling an exception
 ####  15.3.1 Do not access non-static members from a catch handler of constructor/destructor function try block
 - todo
+- GSoC has something on this for the CSA i believe
 - traversing all statements and find out all member acesses
 
 ####  15.3.2 Ensure that a program does not result in a call to std::terminate 
