@@ -337,8 +337,7 @@ Just mention your name on the section you will take care of.
 
 ### 7.5 The asm declaration
 #### 7.5.1 Do not use the asm declaration
-- jonathan did it already, in review
-
+- hicpp-no-assembler
 
 ## 8 Definitions
 
