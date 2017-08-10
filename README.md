@@ -555,11 +555,10 @@ template stuff scares me :)
 
 ## 15 Exception handling
 #### 15.1.1 Only use instances of std::exception for exceptions
-- todo
-- this is ez, i want to :)
+- in code review
 
 #### 15.2.1 Do not throw an exception from a destructor
-- in code review
+- front end will implement/has implemented
 
 ### 15.3 Handling an exception
 ####  15.3.1 Do not access non-static members from a catch handler of constructor/destructor function try block
