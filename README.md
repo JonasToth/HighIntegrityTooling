@@ -229,8 +229,7 @@ Just mention your name on the section you will take care of.
 
 ### 6.1 Selection statements
 #### 6.1.1 Enclose the body of a selection or an iteration statement in a compound statement
-- how would that be done?
-- todo
+- readability-braces-around-statements
 
 #### 6.1.2 Explicitly cover all paths through multi-way selection statements
 - i think this can be done ez as well, unsure
