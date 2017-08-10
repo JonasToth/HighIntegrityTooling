@@ -52,8 +52,7 @@ Just mention your name on the section you will take care of.
 - this would be done with many checkers that can transform as well?
 
 #### 1.3.5 Do not use throw exception specifications
-- i saw a check for that in review or sth like that, did not find it right now
-- todo
+- modernize-use-noexcept
 
 
 ## 2 Lexical conventions
