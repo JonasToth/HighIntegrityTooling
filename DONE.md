@@ -1,19 +1,6 @@
-# Purpose
-
-This repo is just meant to be able to manage and plan who implements which part
-of the high integrity c++ - coding standard in clang-tidy. Would be nice to be
-able to reduce duplicate work :)
-
-# Sections overview
-
-Just mention your name on the section you will take care of.
-
-## 1 General
-
-
 ### 1.1 Implementation compliance
 #### 1.1.1 Ensure that code complies with the 2011 ISO C++ Language Standard
-- compiler flags
+- use --std=c++11 or higher as compiler flag
 
 ### 1.2 Redundancy
 #### 1.2.1 Ensure that all statements are reachable

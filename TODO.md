@@ -1,13 +1,3 @@
-# Purpose
-
-This repo is just meant to be able to manage and plan who implements which part
-of the high integrity c++ - coding standard in clang-tidy. Would be nice to be
-able to reduce duplicate work :)
-
-# Sections overview
-
-Just mention your name on the section you will take care of.
-
 #### 1.2.1 Ensure that all statements are reachable
 - clang-static analyzer - dead-store
 - i think there is no dead code check but i felt like there was one
