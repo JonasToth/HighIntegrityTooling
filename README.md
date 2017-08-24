@@ -4,22 +4,9 @@ This repo is just meant to be able to manage and plan who implements which part
 of the high integrity c++ - coding standard in clang-tidy. Would be nice to be
 able to reduce duplicate work :)
 
-
 # Sections overview
 
 Just mention your name on the section you will take care of.
-
-
-## 0 Introduction
-
-### 0.1 Typographical Conventions
-### 0.2 Escalation policy
-### 0.3 Base Standard and Policy
-### 0.4 Basis of requirements
-### 0.5 Rule Enforcement
-### 0.6 Deviations
-### 0.7 Glossary
-
 
 ## 1 General
 
@@ -554,7 +541,7 @@ template stuff scares me :)
 
 ## 15 Exception handling
 #### 15.1.1 Only use instances of std::exception for exceptions
-- in code review
+- hicpp-exception-baseclass
 
 #### 15.2.1 Do not throw an exception from a destructor
 - front end will implement/has implemented
