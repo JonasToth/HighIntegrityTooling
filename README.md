@@ -100,7 +100,7 @@ Just mention your name on the section you will take care of.
 
 ### 3.4 Object lifetime
 #### 3.4.1 Do not return a reference or a pointer to an automatic variable defined within the function
-- compiler diagnostic can do this already
+- -Wreturn-stack-address
 
 #### 3.4.2 Do not assign the address of a variable to a pointer with a greater lifetime
 - lifetime analysis? this is CSA area i guess

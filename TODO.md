@@ -42,9 +42,6 @@
 #### 3.3.1 Do not use variables with static storage duration
 - todo
 
-#### 3.4.1 Do not return a reference or a pointer to an automatic variable defined within the function
-- compiler diagnostic can do this already
-
 #### 3.4.2 Do not assign the address of a variable to a pointer with a greater lifetime
 - lifetime analysis? this is CSA area i guess
 
@@ -99,8 +96,6 @@
 #### 5.4.3 Do not convert from a base class to a derived class
 - todo but maybe already covered by cast checker
 
-#### 5.5.1 Ensure that the right hand operand of the division or remainder operators is demonstrably non-zero
-- clang-static-analyzer core.DivideZero
 
 #### 5.6.1 Do not use bitwise operators with signed operands
 - todo
