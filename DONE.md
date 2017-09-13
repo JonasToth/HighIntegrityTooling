@@ -27,7 +27,6 @@
 #### 2.5.3 Use nullptr for the null pointer constant 
 - modernize-use-nullptr
 
-### 3.2 Program and linkage
 #### 3.2.1 Do not declare functions at block scope
 - -Wvexing-parse
 
@@ -64,6 +63,13 @@
 - readability-braces-around-statements
 - hicpp-braces-around-statements
 
+#### 6.1.2 Explicitly cover all paths through multi-way selection statements
+- -Wswitch
+- hicpp-multiway-paths-covered
+
+#### 6.1.3 Ensure that a non-empty case statement block does not fall through to the next label
+- -Wimplicit-fallthrough
+
 #### 6.2.1 Implement a loop that only uses element values as a range-based loop
 - modernize-loop-convert
 
@@ -71,7 +77,10 @@
 - -Wreturn-type
 
 #### 7.1.1 Declare each identifier on a separate line in a separate declaration
-- there is one already, i did not find it atm
+- clang-format handles this
+
+#### 7.1.2 Use const whenever possible
+- readability-non-const-parameter
 
 #### 7.1.8 Use auto id = expr when declaring a variable to have the same type as its initializer function call
 - modernize-use-auto
@@ -122,14 +131,12 @@
 - hicpp-member-init
 
 #### 12.4.4 Write members in an initialization list in the order in which they are declared
-- i though there is an check for that, cannot find it!
-- maybe todo
+- clang-diagnostic-reorder
 
 #### 12.4.5 Use delegating constructors to reduce code duplication 
 - misc-undelegated-constructor
 - hicpp-undelegated-constructor
 
-### 12.5 Copying and moving class objects
 #### 12.5.1 Define explicitly =default or =delete implicit special member functions of concrete classes
 - modernize-use-equals-default
 - modernize-use-equals-delete
