@@ -96,10 +96,6 @@
 #### 5.4.3 Do not convert from a base class to a derived class
 - todo but maybe already covered by cast checker
 
-
-#### 5.6.1 Do not use bitwise operators with signed operands
-- todo
-
 #### 5.7.1 Do not write code that expects floating point calculations to yield exact results
 - todo
 - check for equality comparison with floating point values
@@ -113,6 +109,7 @@
 #### 6.1.2 Explicitly cover all paths through multi-way selection statements
 - i think this can be done ez as well, unsure
 - todo
+- hicpp-multiway-paths-covered in codereview
 
 #### 6.1.3 Ensure that a non-empty case statement block does not fall through to the next label
 - should be ez
