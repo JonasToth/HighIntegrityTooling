@@ -80,15 +80,10 @@
 
 #### 5.2.2 Ensure that functions do not call themselves, either directly or indirectly
 - i dont know, is there a callgraph analysis method?
+- so recursion is forbidden?
 
 #### 5.3.1 Do not apply unary minus to operands of unsigned type
 - i think this should be ez
-
-#### 5.4.1 Only use casting forms: static_cast (excl. void*), dynamic_cast or explicit constructor call
-- cppcoreguidelines-pro-type-const-cast
-- cppcoreguidelines-pro-type-cstyle-cast
-- google-explicit-constructor
-- google-readability-casting
 
 #### 5.4.2 Do not cast an expression to an enumeration type
 - todo but is it necessary? casting is bad anyway and enforced already
@@ -109,15 +104,15 @@
 #### 6.1.2 Explicitly cover all paths through multi-way selection statements
 - i think this can be done ez as well, unsure
 - todo
-- hicpp-multiway-paths-covered in codereview
+- hicpp-multiway-paths-covered in codereview, might land in warnings as well
+- Wswitch
 
 #### 6.1.3 Ensure that a non-empty case statement block does not fall through to the next label
-- should be ez
-- todo
+- -Wimplicit-fallthrough
+- warnings seems buggy, investigate
 
 #### 6.1.4 Ensure that a switch statement has at least two case labels, distinct from the default label 
-- should be ez
-- todo
+- hicpp-multiway-paths-covered in codereview
 
 #### 6.2.2 Ensure that a loop has a single loop counter, an optional control variable, and is not degenerate
 - hmmm, complicated?
@@ -144,7 +139,7 @@
 
 #### 7.1.2 Use const whenever possible
 - very valuable to have a checker that will do const correctness with automatic fixing
-- todo
+- readability-non-const-parameter only for function arguments
 
 #### 7.1.3 Do not place type specifiers before non-type specifiers in a declaration
 - todo
@@ -234,6 +229,7 @@
 
 #### 9.1.5 Do not introduce virtual functions in a final class 
 - todo
+- should be a compiler warning
 
 ### 9.2 Bit-fields
 - todo
@@ -266,16 +262,8 @@
 - todo
 - maybe something for undefinedbehavioursanitizer?
 
-#### 12.4.2 Ensure that a constructor initializes explicitly all base classes and non-static data members
-- todo for the baseclasses?
-- cppcoreguidelines-pro-type-member-init
-
 #### 12.4.3 Do not specify both an NSDMI and a member initializer in a constructor for the same non static member
 - todo
-
-#### 12.4.4 Write members in an initialization list in the order in which they are declared
-- i though there is an check for that, cannot find it!
-- maybe todo
 
 #### 12.5.3 Ensure that a user defined move/copy constructor only moves/copies base and member objects
 - todo
@@ -296,11 +284,14 @@
 - todo
 
 #### 13.2.1 Do not overload operators with special semantics
-- todo
+- todo, probably not possible without human understanding
 
 #### 13.2.2 Ensure that the return type of an overloaded binary operator matches the built-in counterparts
 - todo
 - that should be a lot to do, but rather mechanical
+- Expression Templates will be very noisy
+- Maybe do logical operators as default
+- Configurable if Arithmetic operators should be considered as well
 
 #### 13.2.3 Declare binary arithmetic and bitwise operators as non-members
 - todo
@@ -314,9 +305,6 @@
 - todo
 - heuristic, but i think codereview is necessary
 
-#### 14.1.1 Use variadic templates rather than an ellipsis
-- cppcoreguidelines-pro-type-vararg
-
 ####  14.2.1 Declare template specializations in the same file as the primary template they specialize
 - todo
 
@@ -325,18 +313,19 @@
 
 ####  14.2.3 Declare extern an explicitly instantiated template 
 - todo
+- extern templates? Wasn't this a big fail or is something else meant with this?
 
 #### 15.2.1 Do not throw an exception from a destructor
-- front end will implement/has implemented
+- front end will implement/has implemented, very important
 
 ####  15.3.1 Do not access non-static members from a catch handler of constructor/destructor function try block
 - todo
-- GSoC has something on this for the CSA i believe
 - traversing all statements and find out all member acesses
 
 ####  15.3.2 Ensure that a program does not result in a call to std::terminate 
 - todo
 - static analysis?
+- terminate: unhandled exception, maybe exception from destructor, exception from `noexcept`-function, stuff with the allocation functions as well
 
 ####  16.1.1 Use the preprocessor only for implementing include guards, and including header files with include guards
 - todo
@@ -357,6 +346,7 @@
 ####  16.1.5 Include directly the minimum number of headers required for compilation 
 - todo
 - modularize?
+- new possible clang tool: IWYU, Include what you use already exists, google it
 
 #### 17.1.1 Do not use std::vector\<bool>
 - in code review, by jonathan
@@ -366,13 +356,14 @@
 
 ####  17.3.2 Use std::forward to forward universal references
 - todo
-- can be done?
+- get all calls of std::forward on values, not being a universal reference
 
 ####  17.3.3 Do not subsequently use the argument to std::forward
-- use after move is almost the same
+- use after move is almost the same, maybe patch there
 
 ####  17.3.4 Do not create smart pointers of array type
 - todo
+- std::make_unique<T[]> works in newer standards
 
 ####  17.3.5 Do not create an rvalue reference of std::array 
 - todo
@@ -383,6 +374,7 @@
 
 #### 17.5.1 Do not ignore the result of std::remove, std::remove_if or std::unique
 - todo
+- ez?
 
 #### 18.1.1 Do not use platform specific multi-threading facilities
 - todo
@@ -394,22 +386,21 @@
 
 ####  18.2.2 Synchronize access to data shared between threads using a single lock
 - todo
-- static analysis
+- static analyzer
 
 ####  18.2.3 Do not share volatile data between threads
 - todo
-- forbid volatile in general? :D
 
 ####  18.2.4 Use std::call_once rather than the Double-Checked Locking pattern 
 - todo
 
 ####  18.3.1 Within the scope of a lock, ensure that no static path results in a lock of the same mutex
 - todo
-- static analysis
+- static analyzer
 
 ####  18.3.2 Ensure that order of nesting of locks in a project forms a DAG
 - todo
-- static analysis possible?
+- static analyzer
 
 ####  18.3.3 Do not use std::recursive_mutex
 - todo
@@ -417,14 +408,15 @@
 
 ####  18.3.4 Only use std::unique_lock when std::lock_guard cannot be used
 - todo
-- maybe one step can be std::lock_guard could be warned always
+- maybe one step can be std::unique_lock could be warned always
 
 ####  18.3.5 Do not access the members of std::mutex directly
 - todo
-- ez?
+- ez
 
 ####  18.3.6 Do not use relaxed atomics 
 - todo
+- ez?
 
 #### 18.4.1 Do not use std::condition_variable_any on a std::mutex
 - todo
