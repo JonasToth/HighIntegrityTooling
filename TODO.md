@@ -101,18 +101,9 @@
 #### 5.8.1 Do not use the conditional operator (?:) as a sub-expression
 - todo
 
-#### 6.1.2 Explicitly cover all paths through multi-way selection statements
-- i think this can be done ez as well, unsure
-- todo
-- hicpp-multiway-paths-covered in codereview, might land in warnings as well
-- Wswitch
-
 #### 6.1.3 Ensure that a non-empty case statement block does not fall through to the next label
 - -Wimplicit-fallthrough
 - warnings seems buggy, investigate
-
-#### 6.1.4 Ensure that a switch statement has at least two case labels, distinct from the default label 
-- hicpp-multiway-paths-covered in codereview
 
 #### 6.2.2 Ensure that a loop has a single loop counter, an optional control variable, and is not degenerate
 - hmmm, complicated?

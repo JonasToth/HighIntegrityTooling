@@ -218,16 +218,14 @@ Just mention your name on the section you will take care of.
 - readability-braces-around-statements
 
 #### 6.1.2 Explicitly cover all paths through multi-way selection statements
-- i think this can be done ez as well, unsure
-- todo
+- -Wswitch
+- hicpp-multiway-paths-covered
 
 #### 6.1.3 Ensure that a non-empty case statement block does not fall through to the next label
-- should be ez
-- todo
+- -Wimplicit-fallthrough
 
 #### 6.1.4 Ensure that a switch statement has at least two case labels, distinct from the default label 
-- should be ez
-- todo
+- hicpp-multiway-paths-covered
 
 ### 6.2 Iteration statements
 #### 6.2.1 Implement a loop that only uses element values as a range-based loop

@@ -70,6 +70,9 @@
 #### 6.1.3 Ensure that a non-empty case statement block does not fall through to the next label
 - -Wimplicit-fallthrough
 
+#### 6.1.4 Ensure that a switch statement has at least two case labels, distinct from the default label 
+- hicpp-multiway-paths-covered
+
 #### 6.2.1 Implement a loop that only uses element values as a range-based loop
 - modernize-loop-convert
 
