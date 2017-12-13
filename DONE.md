@@ -21,11 +21,14 @@
 - clang-format
 
 #### 2.2.1 Do not use digraphs or trigraphs
-- there is something?
-- clang-format?!
+-Wtrigraphs
 
 #### 2.5.3 Use nullptr for the null pointer constant 
 - modernize-use-nullptr
+
+#### 3.1.1 Do not hide declarations
+-Wshadow
+-Wshadow-all
 
 #### 3.2.1 Do not declare functions at block scope
 - -Wvexing-parse
@@ -36,6 +39,23 @@
 
 #### 4.1.1 Ensure that a function argument does not undergo an array-to-pointer conversion
 - cppcoreguidelines-pro-bounds-array-to-pointer-decay
+
+#### 4.2.2 Ensure that data loss does not demonstrably occur in an integral expression
+
+The list of the warnings here can point you towards problems, but the problem
+is general and most likely not statically spottable for every case.
+Use sanitizers!
+
+-Wsign-conversion
+-Wshorten-64-to-32
+-Wshift-sign-overflow
+-Wshift-overflow
+-Wshift-count-overflow
+-Wshift-negative-value
+-Wshift-count-negative
+-Wfloat-conversion
+-Wfloat-overflow-conversion
+-Wfloat-zero-conversion
 
 #### 5.2.1 Ensure that pointer or array access is demonstrably within bounds of a valid object
 - cppcoreguidelines-pro-bounds-\*
@@ -55,6 +75,10 @@
 
 #### 5.5.1 Ensure that the right hand operand of the division or remainder operators is demonstrably non-zero
 - clang-analyzer-core.DivideZero
+-Wdivision-by-zero
+
+#### 5.7.1 Do not write code that expects floating point calculations to yield exact results
+-Wfloat-equal
 
 #### 5.6.1 Do not use bitwise operators with signed operands
 - hicpp-signed-bitwise

@@ -10,9 +10,6 @@
 - this would be done with many checkers that can transform as well?
 
 ### 2.2 Trigraph sequences
-#### 2.2.1 Do not use digraphs or trigraphs
-- there is something?
-- clang-format?!
 
 #### 2.3.1 Do not use the C comment delimiters /* … */
 - preprocessor could do that
@@ -34,10 +31,6 @@
 - should be ez, but unsure for that
 - todo
 
-#### 3.1.1 Do not hide declarations
-- is there warning?
-- todo
-
 ### 3.3 Storage duration
 #### 3.3.1 Do not use variables with static storage duration
 - todo
@@ -56,9 +49,6 @@
 ### 4.2 Integral conversions
 #### 4.2.1 Ensure that the U suffix is applied to a literal used in a context requiring an unsigned integral expression
 - todo
-
-#### 4.2.2 Ensure that data loss does not demonstrably occur in an integral expression
-- todo/impossible? static analyzer
 
 #### 5.1.1 Use symbolic names instead of literal values in code
 - code review? is there a way to make some automation on that topic?
@@ -90,10 +80,6 @@
 
 #### 5.4.3 Do not convert from a base class to a derived class
 - todo but maybe already covered by cast checker
-
-#### 5.7.1 Do not write code that expects floating point calculations to yield exact results
-- todo
-- check for equality comparison with floating point values
 
 #### 5.7.2 Ensure that a pointer to member that is a virtual function is only compared (==) with nullptr 
 - todo
@@ -219,8 +205,9 @@
 - todo
 
 #### 9.1.5 Do not introduce virtual functions in a final class 
-- todo
-- should be a compiler warning
+
+- -Wabstract-final-class for new abstract virtual methods in a final class
+- todo: warn for newly introduced and implemented methods
 
 ### 9.2 Bit-fields
 - todo
