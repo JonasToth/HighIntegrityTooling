@@ -104,8 +104,8 @@
 - todo
 
 #### 6.3.1 Ensure that the label(s) for a jump statement or a switch condition appear later, in the same or an enclosing block
-- idk, but but that feels like static analysis?
-- todo
+- cppcoreguidelines-avoid-goto requires forward jumps for gotos
+- switch stuff not implemented
 
 #### 6.4.1 Postpone variable definitions as long as possible
 - todo
