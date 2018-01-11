@@ -100,6 +100,9 @@ Use sanitizers!
 #### 6.2.1 Implement a loop that only uses element values as a range-based loop
 - modernize-loop-convert
 
+#### 6.3.1 Ensure that the label(s) for a jump statement or a switch condition appear later, in the same or an enclosing block
+- cppcoreguidelines-avoid-goto requires forward jumps for gotos
+
 #### 6.3.2 Ensure that execution of a function with a non-void return type ends in a return statement with a value 
 - -Wreturn-type
 
