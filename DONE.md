@@ -33,6 +33,9 @@
 #### 3.2.1 Do not declare functions at block scope
 - -Wvexing-parse
 
+#### 3.3.1 Do not use variables with static storage duration
+- fuchsia-statically-constructed-objects
+
 #### 3.4.1 Do not return a reference or a pointer to an automatic variable defined within the function
 - -Wreturn-stack-address
 - clang-analyzer-core.StackAddressEscape
