@@ -31,10 +31,6 @@
 - should be ez, but unsure for that
 - todo
 
-### 3.3 Storage duration
-#### 3.3.1 Do not use variables with static storage duration
-- todo
-
 #### 3.4.2 Do not assign the address of a variable to a pointer with a greater lifetime
 - lifetime analysis? this is CSA area i guess
 
